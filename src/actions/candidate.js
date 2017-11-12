@@ -1,10 +1,8 @@
 
-export const updateInfo = (state) => {
+export const updateInfo = (data) => {
   return {
     type: 'UPDATE_INFO',
-    payload: {
-      user: state.user
-    }
+    payload: data
   }
 }
 

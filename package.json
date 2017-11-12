@@ -4,12 +4,16 @@
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
+    "js-base64": "^2.3.2",
     "prop-types": "^15.6.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "spotify-web-api-js": "^0.22.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,6 +29,12 @@
   "proxy": {
     "/authorize": {
       "target": "https://accounts.spotify.com/authorize/",
+      "prependPath": true,
+      "changeOrigin": true,
+      "protocolRewrite": true
+    },
+    "/v1/me": {
+      "target": "https://api.spotify.com/v1/me",
       "prependPath": true,
       "changeOrigin": true,
       "protocolRewrite": true
