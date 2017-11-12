@@ -38,6 +38,29 @@ export const updateInfo = (data) => {
   }
 }
 
+export const loadingTracks = () => {
+  return {
+    type: 'LOADING_TRACKS',
+  }
+}
+
+export const fetchUserTopTracks = () => {
+  return (dispatch, getState) => {
+    dispatch(loadingTracks())
+    const { accessToken } = getState().spotify;
+
+    return axios({
+        method: 'get',
+        url: 'https://api.spotify.com/v1/me/top/tracks',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`
+        }
+      }).then(r => {
+        dispatch(updateUserTopTracks(r.data.items))
+      });
+  }
+}
+
 export const updateUserTopTracks = (tracks) => {
   return {
     type: 'UPDATE_TRACKS',

@@ -1,6 +1,8 @@
 const initialState = {
   isLoaded: false,
   isAuthenticated: false,
+  isLoading: false,
+  tracksLoading: false,
   favorites: [],
   recommendations: [],
   seed: []
@@ -22,6 +24,11 @@ export default function (state = initialState, action) {
     case 'UPDATE_TRACKS':
       return Object.assign({}, state, {
         favorites: action.payload.tracks
+      });
+
+    case 'LOADING_TRACKS':
+      return Object.assign({}, state, {
+        tracksLoading: true,
       });
 
     case 'TOGGLE_FAVORITE':
