@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import axios from 'axios';
 
 import Auth from './Auth';
 import Tracks from './Tracks';
-import { toggleToFavorites, fetchUserTopTracks } from '../actions/candidate';
+import {
+  toggleToFavorites,
+  fetchUserTopTracks,
+  fetchRecommendations,
+} from '../actions/candidate';
 
 class User extends Component {
   constructor(props) {
@@ -22,31 +25,17 @@ class User extends Component {
     this.props.toggleToFavorites(item.id);
   }
 
-  getRecommendations() {
-    axios({
-      method: 'get',
-      url: 'https://api.spotify.com/v1/recommendations',
-      params: {
-        seed_tracks: this.props.candidate.seed
-      },
-      headers: {
-        'Authorization': `Bearer ${this.props.spotify.accessToken}`
-      }
-    }).then(r => {
-      this.props.updateUserTopTracks(r.data.items);
-    }).catch(err => {
-      console.log(err);
-    });
-  }
-
   render() {
     const { candidate } = this.props;
 
     return (
       <div>
         {(!candidate.isLoaded && !candidate.isAuthenticated) && <Auth />}
-        <h1>Hi {candidate.display_name} </h1>
-        <Tracks items={candidate.favorites} toggleItem={this.toggleItem} />
+
+        {candidate.isLoaded && <h1>Hi {candidate.display_name} </h1>}
+        {candidate.isLoaded && <Tracks items={candidate.favorites} toggleItem={this.toggleItem} />}
+        {candidate.isLoaded && <button onClick={() => this.props.fetchRecommendations()}>Load Recommendations</button>}
+        {candidate.isLoaded && <Tracks items={candidate.recommendations} />}
       </div>
     );
   }
@@ -62,6 +51,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchUserTopTracks: () => dispatch(fetchUserTopTracks()),
+    fetchRecommendations: () => dispatch(fetchRecommendations()),
     toggleToFavorites: id => dispatch(toggleToFavorites(id)),
   };
 };

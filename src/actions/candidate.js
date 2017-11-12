@@ -61,6 +61,28 @@ export const fetchUserTopTracks = () => {
   }
 }
 
+export const fetchRecommendations = () => {
+  return (dispatch, getState) => {
+    dispatch(loadingTracks())
+    const state = getState();
+    const { accessToken } = state.spotify;
+    const { seed } = state.candidate;
+
+    return axios({
+      method: 'get',
+      url: 'https://api.spotify.com/v1/recommendations',
+      params: {
+        seed_tracks: seed.join(',')
+      },
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    }).then(r => {
+      dispatch(updateRecommendation(r.data.tracks));
+    });
+  }
+}
+
 export const updateUserTopTracks = (tracks) => {
   return {
     type: 'UPDATE_TRACKS',
@@ -69,6 +91,16 @@ export const updateUserTopTracks = (tracks) => {
     }
   }
 }
+
+export const updateRecommendation = (tracks) => {
+  return {
+    type: 'UPDATE_RECOMMENDATIONS_TRACKS',
+    payload: {
+      tracks
+    }
+  }
+}
+
 
 export const toggleToFavorites = (id) => {
   return {

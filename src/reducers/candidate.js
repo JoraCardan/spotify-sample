@@ -26,6 +26,11 @@ export default function (state = initialState, action) {
         favorites: action.payload.tracks
       });
 
+    case 'UPDATE_RECOMMENDATIONS_TRACKS':
+      return Object.assign({}, state, {
+        recommendations: action.payload.tracks
+      });
+
     case 'LOADING_TRACKS':
       return Object.assign({}, state, {
         tracksLoading: true,
