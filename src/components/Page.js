@@ -1,46 +1,40 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 
-import { getUrlParams } from '../helpers';
-import { updateToken } from '../actions/spotify';
-import { updateInfo } from '../actions/candidate';
+import Auth from './Auth';
+import AuthPart2 from './AuthPart2';
 
-class Page extends Component {
-  componentDidMount() {
-    const params = getUrlParams(this.props.location.hash.split('#')[1]);
-    this.props.updateToken(params.access_token, params.token_type);
+import { authUser } from '../actions/candidate';
 
-    axios({
-      method: 'get',
-      url: 'https://api.spotify.com/v1/me',
-      headers: {
-        'Authorization': `Bearer ${params.access_token}`
-      }
-    }).then(r => {
-      this.props.updateUserInfo(r.data);
-      this.props.history.push(`/user/${r.data.id}`);
-    }).catch(err => {
-      console.log(err);
-    });
+const PageAuth = (props) => {
+  console.log(props);
+  const isConfigured = process.env.REACT_APP_CLIENT_ID || process.env.REACT_APP_CLIENT_SECRET;
+  const { isAuthenticated } = props;
+
+  if (window.location.hash) {
+    props.authUser();
   }
 
-  render() {
-    return <h2>Still processing :)</h2>;
-  }
-};
+  return (
+    <div>
+      {!isConfigured && <h1>Please add Your Spotify Client ID to the .env file</h1>}
+      {(isConfigured && !isAuthenticated) && <Auth />}
+      {(isConfigured && isAuthenticated) && <AuthPart2 location={window.location} {...props} />}
+    </div>
+  )
+}
 
 const mapStateToProps = (state) => {
   return {
-    page: state.page
-  };
+    isAuthenticated: state.candidate.isAuthenticated
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateToken: (token, tokenType) => dispatch(updateToken(token, tokenType)),
-    updateUserInfo: data => dispatch(updateInfo(data)),
-  };
-};
+    authUser: () => dispatch(authUser())
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Page)
+
+export default connect(mapStateToProps, mapDispatchToProps)(PageAuth);

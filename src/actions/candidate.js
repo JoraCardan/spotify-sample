@@ -1,21 +1,52 @@
 import axios from 'axios';
 
+export const authUser = () => {
+  return {
+    type: 'AUTH_USER'
+  }
+}
+
+export const loadingUserInfo = () => {
+  return {
+    type: 'LOADING_USER_INFO',
+    paylod: {
+      isLoading: true,
+    }
+  }
+}
+
+export const fetchInfo = () => {
+  return (dispatch, getState) => {
+    dispatch(loadingUserInfo())
+    const { accessToken } = getState().spotify;
+    return axios({
+      method: 'get',
+      url: 'https://api.spotify.com/v1/me',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    }).then(r => {
+      dispatch(updateInfo(r.data))
+    })
+  }
+
+
+
+
+
+  // .then(r => {
+  //   this.props.updateUserInfo(r.data);
+  //   this.props.history.push(`/user/${r.data.id}`);
+  // }).catch(err => {
+  //   console.log(err);
+  // });
+}
 
 export const updateInfo = (data) => {
   return {
     type: 'UPDATE_INFO',
     payload: data
   }
-}
-
-export const getUserInfo = (token) => {
-  return axios({
-    method: 'get',
-    url: 'https://api.spotify.com/v1/me',
-    headers: {
-      'Authorization': `Bearer ${token}`
-    }
-  })
 }
 
 export const updateUserTopTracks = (tracks) => {

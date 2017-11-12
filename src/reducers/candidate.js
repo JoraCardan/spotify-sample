@@ -8,10 +8,15 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case 'AUTH_USER':
+      return Object.assign({}, state, {
+        isAuthenticated: true,
+      });
+
     case 'UPDATE_INFO':
       return Object.assign({}, state, action.payload, {
         isLoaded: true,
-        isAuthenticated: true,
+        isLoading: false,
       });
 
     case 'UPDATE_TRACKS':
