@@ -7,15 +7,14 @@ const Tracks = (props) => {
     } else {
       return props.items.map(item => {
         return (
-          <li key={item.id} onClick={e => props.toggleItem(e, item)}>
-            <figure>
-              <img src={item.album.images[0].url} />
+          <li className="tracks__item" key={item.id}>
+            <figure className="tracks__figure">
+              <img className="tracks__img" src={item.album.images[0].url} alt={item.name} />
             </figure>
-            <div className="content">
-              <a href={item.external_urls.spotify} target="_blank">
-                <h3>Album: {item.album.name}</h3>
-                <h4>Song: {item.name}</h4>
-              </a>
+            <div className="tracks__content">
+              <h4 className="heading heading--bordered">Album: <a className="tracks__link" href={item.album.external_urls.spotify} target="_blank">{item.album.name}</a></h4>
+              <h5 className="heading">Song: <a className="tracks__link" href={item.external_urls.spotify} target="_blank">{item.name}</a></h5>
+              <button className="btn tracks__btn" onClick={e => props.toggleItem(e, item)}>&hearts;</button>
             </div>
           </li>
         );

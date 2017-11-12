@@ -26,12 +26,27 @@ strong, b {
   font-weight: bold;
 }
 
+a {
+  color: currentColor;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: border-color .3s;
+
+  &:hover {
+    border-bottom: 1px solid palette(accent);
+  }
+}
+
 img {
   display: inline-block;
   max-width: 100%;
   width: auto;
   height: auto;
   margin: 0;
+}
+
+.container {
+  padding: .5rem;
 }
 
 .text {

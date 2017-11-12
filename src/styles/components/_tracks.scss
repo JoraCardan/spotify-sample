@@ -1,0 +1,29 @@
+.tracks {
+  margin: 1rem 0;
+
+  &__item {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+
+    &--selected {
+      background-color: rgba(palette(accent, light), .3);
+    }
+  }
+
+  &__figure {
+    box-sizing: border-box;
+    max-width: 25%;
+    padding-right: 5%;
+  }
+
+  &__link {
+    color: palette(accent);
+  }
+
+  &__content {
+    flex-grow: 1;
+  }
+}

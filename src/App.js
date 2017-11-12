@@ -7,7 +7,7 @@ import User from './components/User';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <Switch>
           <Route path="/user/:id" component={User} />
           <Route path="/" component={Page} />

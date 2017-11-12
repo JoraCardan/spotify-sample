@@ -65,12 +65,23 @@ h5 {
 strong, b {
   font-weight: bold; }
 
+a {
+  color: currentColor;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: border-color .3s; }
+  a:hover {
+    border-bottom: 1px solid #df0ed3; }
+
 img {
   display: inline-block;
   max-width: 100%;
   width: auto;
   height: auto;
   margin: 0; }
+
+.container {
+  padding: .5rem; }
 
 .text--center {
   text-align: center; }
@@ -90,9 +101,26 @@ img {
 .text--capitalize {
   text-transform: capitalize; }
 
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin: auto -.5rem; }
+
+.col {
+  box-sizing: border-box;
+  padding: 0 .5rem;
+  flex: 1 1 auto;
+  flex-basis: 100%;
+  max-width: 100%; }
+  @media screen and (min-width: 48rem) {
+    .col {
+      flex-basis: 50%;
+      max-width: 50%; } }
+
 .heading {
   font-weight: 600;
-  margin: .5em 1em; }
+  margin: .5em 0; }
   .heading--bordered {
     padding-bottom: .25em;
     border-bottom: 1px solid; }
@@ -112,10 +140,26 @@ img {
     background-color: #000000;
     color: #FFFFFF; }
   .btn--accent {
-    color: #d8fb06;
+    color: #df0ed3;
     background-color: #FFFFFF; }
     .btn--accent:hover {
-      background-color: #e2ff10; }
+      background-color: #e918dd; }
 
-.login {
-  text-align: center; }
+.tracks {
+  margin: 1rem 0; }
+  .tracks__item {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    margin-bottom: 1rem; }
+    .tracks__item--selected {
+      background-color: rgba(213, 4, 201, 0.3); }
+  .tracks__figure {
+    box-sizing: border-box;
+    max-width: 25%;
+    padding-right: 5%; }
+  .tracks__link {
+    color: #df0ed3; }
+  .tracks__content {
+    flex-grow: 1; }

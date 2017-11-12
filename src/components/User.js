@@ -32,10 +32,17 @@ class User extends Component {
       <div>
         {(!candidate.isLoaded && !candidate.isAuthenticated) && <Auth />}
 
-        {candidate.isLoaded && <h1>Hi {candidate.display_name} </h1>}
-        {candidate.isLoaded && <Tracks items={candidate.favorites} toggleItem={this.toggleItem} />}
-        {candidate.isLoaded && <button onClick={() => this.props.fetchRecommendations()}>Load Recommendations</button>}
-        {candidate.isLoaded && <Tracks items={candidate.recommendations} />}
+        {candidate.isLoaded && <h1 className="heading heading--bordered">Hi {candidate.display_name} </h1>}
+        {candidate.isLoaded && <button className="btn" onClick={() => this.props.fetchRecommendations()}>Load Recommendations</button>}
+        <div className="row">
+          <div className="col">
+            {candidate.isLoaded && <Tracks items={candidate.favorites} toggleItem={this.toggleItem} />}
+          </div>
+          <div className="col">
+            {candidate.isLoaded && <Tracks items={candidate.recommendations} />}
+          </div>
+        </div>
+        {candidate.isLoaded && <button className="btn" onClick={() => this.props.fetchRecommendations()}>Load Recommendations</button>}
       </div>
     );
   }

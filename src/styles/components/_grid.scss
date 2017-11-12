@@ -1,0 +1,19 @@
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin: auto -.5rem;
+}
+
+.col {
+  box-sizing: border-box;
+  padding: 0 .5rem;
+  flex: 1 1 auto;
+  flex-basis: 100%;
+  max-width: 100%;
+
+  @include breakpoint(sm) {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+}
