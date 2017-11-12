@@ -11,7 +11,6 @@ class Auth extends Component {
   }
 
   authUser() {
-    const self = this;
     const url = `https://accounts.spotify.com/authorize?client_id=${this.state.CLIENT_ID}&response_type=token&redirect_uri=${encodeURIComponent('http://localhost:3000/')}&scope=${encodeURIComponent('user-top-read user-library-read')}`;
     window.open(url, '_self');
   }
