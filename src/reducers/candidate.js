@@ -23,12 +23,14 @@ export default function (state = initialState, action) {
 
     case 'UPDATE_TRACKS':
       return Object.assign({}, state, {
-        favorites: action.payload.tracks
+        favorites: action.payload.tracks,
+        tracksLoading: false,
       });
 
     case 'UPDATE_RECOMMENDATIONS_TRACKS':
       return Object.assign({}, state, {
-        recommendations: action.payload.tracks
+        recommendations: action.payload.tracks,
+        tracksLoading: false,
       });
 
     case 'LOADING_TRACKS':

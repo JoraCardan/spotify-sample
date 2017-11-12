@@ -71,7 +71,7 @@ a {
   border: 1px solid transparent;
   transition: border-color .3s; }
   a:hover {
-    border-bottom: 1px solid #5da8b3; }
+    border-bottom: 1px solid #9eb65c; }
 
 img {
   display: inline-block;
@@ -136,16 +136,17 @@ img {
   outline: none;
   cursor: pointer;
   transition: color .3s, border-color .3s, background-color .3s; }
-  .btn:hover {
+  .btn:not(.btn--disabled):hover {
     background-color: #000000;
     color: #FFFFFF; }
   .btn--accent {
-    color: #5da8b3;
+    color: #9eb65c;
     background-color: #FFFFFF; }
     .btn--accent:hover {
-      background-color: #85d0db; }
+      background-color: #c6de84; }
   .btn--disabled {
-    color: rgba(0, 0, 0, 0.5); }
+    color: rgba(0, 0, 0, 0.5);
+    cursor: default; }
 
 .tracks {
   margin: 1rem 0; }
@@ -156,13 +157,16 @@ img {
     justify-content: flex-start;
     margin-bottom: 1rem; }
   .tracks__btn--selected {
-    background-color: #5da8b3;
-    color: #85d0db; }
+    background-color: #9eb65c;
+    color: #c6de84; }
+    .tracks__btn--selected:hover {
+      background-color: #9eb65c;
+      color: #c6de84; }
   .tracks__figure {
     box-sizing: border-box;
     max-width: 25%;
     padding-right: 5%; }
   .tracks__link {
-    color: #5da8b3; }
+    color: #9eb65c; }
   .tracks__content {
     flex-grow: 1; }

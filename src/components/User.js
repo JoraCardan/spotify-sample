@@ -16,6 +16,23 @@ class User extends Component {
     if (props.candidate.isAuthenticated && props.candidate.isLoaded) {
       this.props.fetchUserTopTracks();
     }
+
+    this.loadRecommendations = this.loadRecommendations.bind(this);
+  }
+
+  loadRecommendations() {
+    const { candidate } = this.props;
+    if (candidate.isLoaded && candidate.seed.length && !candidate.tracksLoading) {
+      return <button className="btn" onClick={() => this.props.fetchRecommendations()}>Load Recommendations</button>;
+    } else if (candidate.tracksLoading) {
+      return (
+        <div className="text--center">
+          <img src="https://media.giphy.com/media/3y0oCOkdKKRi0/giphy.gif" alt="loading" />
+        </div>
+      );
+    } else if (candidate.isLoaded) {
+      return <button className="btn btn--disabled">Please Add to Favorites at least a couple of songs</button>
+    }
   }
 
   render() {
@@ -26,16 +43,14 @@ class User extends Component {
         {(!candidate.isLoaded && !candidate.isAuthenticated) && <Auth />}
 
         {candidate.isLoaded && <h1 className="heading heading--bordered">Hi {candidate.display_name} </h1>}
-        {candidate.isLoaded && <button className="btn" onClick={() => this.props.fetchRecommendations()}>Load Recommendations</button>}
         <div className="row">
           <div className="col">
             {candidate.isLoaded && <Tracks items={candidate.favorites} seed={candidate.seed} toggleItem={toggleToFavorites} />}
           </div>
           <div className="col">
-            {candidate.isLoaded && <Tracks items={candidate.recommendations} />}
+            {candidate.isLoaded && <Tracks items={candidate.recommendations}>{this.loadRecommendations()}</Tracks>}
           </div>
         </div>
-        {candidate.isLoaded && <button className="btn" onClick={() => this.props.fetchRecommendations()}>Load Recommendations</button>}
       </div>
     );
   }

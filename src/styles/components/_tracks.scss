@@ -13,6 +13,11 @@
     &--selected {
       background-color: palette(accent);
       color: palette(accent, dark);
+
+      &:hover {
+        background-color: palette(accent);
+        color: palette(accent, dark);
+      }
     }
   }
 
