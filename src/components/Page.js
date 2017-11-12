@@ -17,7 +17,7 @@ const PageAuth = (props) => {
 
   return (
     <div>
-      {!isConfigured && <h1>Please add Your Spotify Client ID to the .env file</h1>}
+      {!isConfigured && <h1 className="heading heading--bordered">Please add Your Spotify Client ID to the .env file</h1>}
       {(isConfigured && !isAuthenticated) && <Auth />}
       {(isConfigured && isAuthenticated) && <AuthPart2 location={window.location} {...props} />}
     </div>

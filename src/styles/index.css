@@ -1,4 +1,121 @@
-body {
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600");
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
-  font: 16px sans-serif; }
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+  blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  font: 16px "Open Sans", sans-serif; }
+
+h1 {
+  font-size: 3rem; }
+
+h2 {
+  font-size: 2.5rem; }
+
+h3 {
+  font-size: 2rem; }
+
+h4 {
+  font-size: 1.5rem; }
+
+h5 {
+  font-size: 1rem; }
+
+strong, b {
+  font-weight: bold; }
+
+img {
+  display: inline-block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  margin: 0; }
+
+.text--center {
+  text-align: center; }
+
+.text--right {
+  text-align: right; }
+
+.text--left {
+  text-align: left; }
+
+.text--uppercase {
+  text-transform: uppercase; }
+
+.text--lowercase {
+  text-transform: lowercase; }
+
+.text--capitalize {
+  text-transform: capitalize; }
+
+.heading {
+  font-weight: 600;
+  margin: .5em 1em; }
+  .heading--bordered {
+    padding-bottom: .25em;
+    border-bottom: 1px solid; }
+
+.btn {
+  display: inline-block;
+  padding: .5rem .75rem;
+  line-height: 1;
+  border: 1px solid currentColor;
+  background-color: #FFFFFF;
+  color: #000000;
+  font-size: 1rem;
+  outline: none;
+  cursor: pointer;
+  transition: color .3s, border-color .3s, background-color .3s; }
+  .btn:hover {
+    background-color: #000000;
+    color: #FFFFFF; }
+  .btn--accent {
+    color: #d8fb06;
+    background-color: #FFFFFF; }
+    .btn--accent:hover {
+      background-color: #e2ff10; }
+
+.login {
+  text-align: center; }

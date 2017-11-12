@@ -22,7 +22,11 @@ class AuthPart2 extends Component {
   }
 
   render() {
-    return <h2>Still processing :)</h2>;
+    return (
+      <div className="text--center">
+        <img src="https://media.giphy.com/media/OiC5BKaPVLl60/giphy-tumblr.gif" alt="loading" />
+      </div>
+    );
   }
 };
 

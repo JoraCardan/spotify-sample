@@ -17,9 +17,12 @@ class Auth extends Component {
 
   render() {
     return (
-      <div>
-        <h1>You have to authenticate to Spotify First</h1>
-        <button onClick={this.authUser.bind(this)}>Auth Me</button>
+      <div className="text--center">
+        <h2 className="heading heading--bordered">You have to authenticate to Spotify First</h2>
+        <button
+          className="btn btn--accent"
+          onClick={this.authUser.bind(this)}
+        >Auth Me</button>
       </div>
     )
   }

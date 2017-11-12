@@ -1,0 +1,109 @@
+$base-font-size: 16px;
+
+// Screen breakpoints
+// ==============================
+$screen-xxs: 20em;
+$screen-xs: 30rem;
+$screen-sm: 48rem;
+$screen-md: 64rem;
+$screen-lg: 75rem;
+
+$color-limit: 255;
+$r: random($color-limit);
+$g: random($color-limit);
+$b: random($color-limit);
+$accent: rgb($r, $g, $b);
+$accent-dark: rgb($r+10, $g+10, $b+10);
+$accent-light: rgb($r - 10, $g - 10, $b - 10);
+$palettes: (
+  white: (
+    base: #FFFFFF,
+    off: #EDEEEF,
+    pale: #F4F4F4
+  ),
+  black: (
+    base: #000000
+  ),
+  accent: (
+    // base: #1abc9c,
+    // dark: #16a085
+    base: $accent,
+    dark: $accent-dark,
+    light: $accent-light
+  ),
+  grey: (
+    base: #B2B2B2,
+    border: #E8E8E8,
+    input: #C3C3C3,
+    placeholder: #717171,
+    text: #565656,
+    background: #ECECEC,
+    light: #FAFAFA
+  ),
+  social: (
+    facebook: #3A5997,
+    twitter: #41A1F6
+  )
+);
+
+
+// pallette
+// @see https://twitter.com/thecodezombie/status/595977653296996354/photo/1
+@function palette($palette, $tone: 'base') {
+  @return map-get(map-get($palettes, $palette), $tone);
+}
+
+@mixin screen-min($min-width) {
+  @media screen
+  and (min-width: $min-width) {
+    @content;
+  }
+}
+
+@mixin screen-range($min-width, $max-width) {
+  @media screen
+  and (min-width: $min-width)
+  and (max-width: $max-width) {
+    @content;
+  }
+}
+
+
+// Breakpoint Mixin
+@mixin breakpoint($min: 0, $max: 0) {
+  $type: type-of($min);
+
+  @if $type == string {
+    @if $min == 'xxs' {
+      @include screen-min($screen-xxs) {
+        @content;
+      }
+    }
+    @else if $min == 'xs' {
+      @include screen-min($screen-xs) {
+        @content;
+      }
+    }
+    @else if $min == 'sm' {
+      @include screen-min($screen-sm) {
+        @content;
+      }
+    }
+    @else if $min == 'md' {
+      @include screen-min($screen-md) {
+        @content;
+      }
+    }
+    @else if $min == 'lg' {
+      @include screen-min($screen-lg) {
+        @content;
+      }
+    }
+  }
+
+  @else if $type == number {
+    @include screen-range($min, $max) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+.heading {
+  font-weight: 600;
+  margin: .5em 1em;
+
+  &--bordered {
+    padding-bottom: .25em;
+    border-bottom: 1px solid;
+  }
+}
