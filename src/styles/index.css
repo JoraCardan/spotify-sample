@@ -71,7 +71,7 @@ a {
   border: 1px solid transparent;
   transition: border-color .3s; }
   a:hover {
-    border-bottom: 1px solid #df0ed3; }
+    border-bottom: 1px solid #6253f2; }
 
 img {
   display: inline-block;
@@ -140,10 +140,10 @@ img {
     background-color: #000000;
     color: #FFFFFF; }
   .btn--accent {
-    color: #df0ed3;
+    color: #6253f2;
     background-color: #FFFFFF; }
     .btn--accent:hover {
-      background-color: #e918dd; }
+      background-color: #6c5dfc; }
 
 .tracks {
   margin: 1rem 0; }
@@ -154,12 +154,12 @@ img {
     justify-content: flex-start;
     margin-bottom: 1rem; }
     .tracks__item--selected {
-      background-color: rgba(213, 4, 201, 0.3); }
+      background-color: rgba(88, 73, 232, 0.3); }
   .tracks__figure {
     box-sizing: border-box;
     max-width: 25%;
     padding-right: 5%; }
   .tracks__link {
-    color: #df0ed3; }
+    color: #6253f2; }
   .tracks__content {
     flex-grow: 1; }
