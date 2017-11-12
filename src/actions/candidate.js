@@ -29,17 +29,6 @@ export const fetchInfo = () => {
       dispatch(updateInfo(r.data))
     })
   }
-
-
-
-
-
-  // .then(r => {
-  //   this.props.updateUserInfo(r.data);
-  //   this.props.history.push(`/user/${r.data.id}`);
-  // }).catch(err => {
-  //   console.log(err);
-  // });
 }
 
 export const updateInfo = (data) => {

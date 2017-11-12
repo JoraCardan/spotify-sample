@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { getUrlParams } from '../helpers';
 import { updateToken } from '../actions/spotify';
-import { updateInfo, fetchInfo } from '../actions/candidate';
+import { fetchInfo } from '../actions/candidate';
 
 
 class AuthPart2 extends Component {
@@ -39,7 +39,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchInfo: () => dispatch(fetchInfo()),
     updateToken: (token, tokenType) => dispatch(updateToken(token, tokenType)),
-    updateUserInfo: data => dispatch(updateInfo(data)),
   };
 };
 
