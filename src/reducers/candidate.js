@@ -2,8 +2,8 @@ const initialState = {
   isLoaded: false,
   isAuthenticated: false,
   favorites: [],
-  attributes: {},
   recommendations: [],
+  seed: []
 };
 
 export default function (state = initialState, action) {
@@ -14,8 +14,24 @@ export default function (state = initialState, action) {
         isAuthenticated: true,
       });
 
-    case 'PARSE_TRACKS':
-      return Object.assign({}, state);
+    case 'UPDATE_TRACKS':
+      return Object.assign({}, state, {
+        favorites: action.payload.tracks
+      });
+
+    case 'TOGGLE_FAVORITE':
+      const newItem = action.payload.id;
+      const newSeed = state.seed.slice();
+      const index = newSeed.indexOf(newItem);
+      if (index >= 0) {
+        newSeed.splice(index, 1);
+      } else {
+        newSeed.push(newItem);
+      }
+
+      return Object.assign({}, state, {
+        seed: newSeed
+      })
 
     default:
       return state;

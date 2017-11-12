@@ -19,21 +19,21 @@ class Page extends Component {
       }
     }).then(r => {
       this.props.updateUserInfo(r.data);
-      this.props.history.push(`/user/${r.data.id}`)
+      this.props.history.push(`/user/${r.data.id}`);
     }).catch(err => {
       console.log(err);
-    })
+    });
   }
 
   render() {
-    return <h2>Still processing :)</h2>
+    return <h2>Still processing :)</h2>;
   }
 };
 
 const mapStateToProps = (state) => {
   return {
     page: state.page
-  }
+  };
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -41,6 +41,6 @@ const mapDispatchToProps = (dispatch) => {
     updateToken: (token, tokenType) => dispatch(updateToken(token, tokenType)),
     updateUserInfo: data => dispatch(updateInfo(data)),
   };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Page)

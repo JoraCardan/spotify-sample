@@ -32,12 +32,6 @@
       "prependPath": true,
       "changeOrigin": true,
       "protocolRewrite": true
-    },
-    "/v1/me": {
-      "target": "https://api.spotify.com/v1/me",
-      "prependPath": true,
-      "changeOrigin": true,
-      "protocolRewrite": true
     }
   }
 }

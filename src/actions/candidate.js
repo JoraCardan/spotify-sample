@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 
 export const updateInfo = (data) => {
   return {
@@ -6,11 +8,30 @@ export const updateInfo = (data) => {
   }
 }
 
-export const parseUserTracks = (something) => {
+export const getUserInfo = (token) => {
+  return axios({
+    method: 'get',
+    url: 'https://api.spotify.com/v1/me',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
+}
+
+export const updateUserTopTracks = (tracks) => {
   return {
-    type: 'PARSE_TRACKS',
+    type: 'UPDATE_TRACKS',
     payload: {
-      tracks: something
+      tracks
+    }
+  }
+}
+
+export const toggleToFavorites = (id) => {
+  return {
+    type: 'TOGGLE_FAVORITE',
+    payload: {
+      id
     }
   }
 }
