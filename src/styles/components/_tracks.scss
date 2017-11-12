@@ -7,9 +7,12 @@
     flex-flow: row nowrap;
     justify-content: flex-start;
     margin-bottom: 1rem;
+  }
 
+  &__btn {
     &--selected {
-      background-color: rgba(palette(accent, light), .3);
+      background-color: palette(accent);
+      color: palette(accent, dark);
     }
   }
 

@@ -13,20 +13,13 @@ class User extends Component {
   constructor(props) {
     super(props);
 
-    this.toggleItem = this.toggleItem.bind(this);
-
     if (props.candidate.isAuthenticated && props.candidate.isLoaded) {
       this.props.fetchUserTopTracks();
     }
   }
 
-  toggleItem(e, item) {
-    console.log(item.id);
-    this.props.toggleToFavorites(item.id);
-  }
-
   render() {
-    const { candidate } = this.props;
+    const { candidate, toggleToFavorites } = this.props;
 
     return (
       <div>
@@ -36,7 +29,7 @@ class User extends Component {
         {candidate.isLoaded && <button className="btn" onClick={() => this.props.fetchRecommendations()}>Load Recommendations</button>}
         <div className="row">
           <div className="col">
-            {candidate.isLoaded && <Tracks items={candidate.favorites} toggleItem={this.toggleItem} />}
+            {candidate.isLoaded && <Tracks items={candidate.favorites} seed={candidate.seed} toggleItem={toggleToFavorites} />}
           </div>
           <div className="col">
             {candidate.isLoaded && <Tracks items={candidate.recommendations} />}

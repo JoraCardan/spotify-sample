@@ -24,4 +24,8 @@
       background-color: palette(accent, dark);
     }
   }
+
+  &--disabled {
+    color: rgba(palette(black), .5);
+  }
 }
