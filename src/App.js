@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router';
 
-import './App.css';
 import Page from './components/Page';
 import User from './components/User';
 
