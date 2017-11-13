@@ -61,7 +61,7 @@ User.propTypes = {
   candidate: PropTypes.shape({
     isAuthenticated: PropTypes.bool,
     tracksLoading: PropTypes.bool,
-    isLoaded: propTypes.bool,
+    isLoaded: PropTypes.bool,
     display_name: PropTypes.string,
     seed: PropTypes.array,
     favorites: PropTypes.array,
