@@ -71,7 +71,7 @@ a {
   border: 1px solid transparent;
   transition: border-color .3s; }
   a:hover {
-    border-bottom: 1px solid #9eb65c; }
+    border-bottom: 1px solid #7bc692; }
 
 img {
   display: inline-block;
@@ -140,10 +140,10 @@ img {
     background-color: #000000;
     color: #FFFFFF; }
   .btn--accent {
-    color: #9eb65c;
+    color: #7bc692;
     background-color: #FFFFFF; }
     .btn--accent:hover {
-      background-color: #c6de84; }
+      background-color: #a3eeba; }
   .btn--disabled {
     color: rgba(0, 0, 0, 0.5);
     cursor: default; }
@@ -157,16 +157,16 @@ img {
     justify-content: flex-start;
     margin-bottom: 1rem; }
   .tracks__btn--selected {
-    background-color: #9eb65c;
-    color: #c6de84; }
+    background-color: #7bc692;
+    color: #a3eeba; }
     .tracks__btn--selected:hover {
-      background-color: #9eb65c;
-      color: #c6de84; }
+      background-color: #7bc692;
+      color: #a3eeba; }
   .tracks__figure {
     box-sizing: border-box;
     max-width: 25%;
     padding-right: 5%; }
   .tracks__link {
-    color: #9eb65c; }
+    color: #7bc692; }
   .tracks__content {
     flex-grow: 1; }

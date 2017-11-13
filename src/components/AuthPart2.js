@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { getUrlParams } from '../helpers';
@@ -36,14 +37,25 @@ const mapStateToProps = (state) => {
       isLoaded: state.candidate.isLoaded,
       id: state.candidate.id,
     }
-  }
-}
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchInfo: () => dispatch(fetchInfo()),
     updateToken: (token, tokenType) => dispatch(updateToken(token, tokenType)),
   };
+};
+
+AuthPart2.propTypes = {
+  candidate: PropTypes.shape({
+    isLoaded: PropTypes.bool.isRequired,
+    id: PropTypes.string,
+  }),
+  fetchInfo: PropTypes.func,
+  updateToken: PropTypes.func,
+  location: PropTypes.object,
+  history: PropTypes.object,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthPart2)

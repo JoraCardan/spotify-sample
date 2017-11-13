@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Auth from './Auth';
@@ -56,12 +57,28 @@ class User extends Component {
   }
 };
 
+User.propTypes = {
+  candidate: PropTypes.shape({
+    isAuthenticated: PropTypes.bool,
+    tracksLoading: PropTypes.bool,
+    isLoaded: propTypes.bool,
+    display_name: PropTypes.string,
+    seed: PropTypes.array,
+    favorites: PropTypes.array,
+    recommendations: PropTypes.array,
+  }).isRequired,
+  spotify: PropTypes.object.isRequired,
+  fetchUserTopTracks: PropTypes.func.isRequired,
+  fetchRecommendations: PropTypes.func.isRequired,
+  toggleToFavorites: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = (state) => {
   return {
     candidate: state.candidate,
     spotify: state.spotify,
-  }
-}
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {

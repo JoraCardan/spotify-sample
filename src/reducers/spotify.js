@@ -3,7 +3,7 @@ const initialState = {
   clientSecret: process.env.REACT_APP_CLIENT_SECRET,
   accessToken: '',
   tokenType: 'Bearer'
-}
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -11,8 +11,8 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         accessToken: action.payload.accessToken,
         tokenType: action.payload.tokenType
-      })
+      });
     default:
       return state;
   }
-}
+};

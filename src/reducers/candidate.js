@@ -50,7 +50,7 @@ export default function (state = initialState, action) {
 
       return Object.assign({}, state, {
         seed: newSeed
-      })
+      });
 
     default:
       return state;

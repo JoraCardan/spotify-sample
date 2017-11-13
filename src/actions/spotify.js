@@ -5,5 +5,5 @@ export const updateToken = (accessToken, tokenType) => {
       accessToken,
       tokenType,
     }
-  }
-}
+  };
+};

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Tracks = (props) => {
   const buildItems = () => {
@@ -25,13 +26,20 @@ const Tracks = (props) => {
         );
       });
     }
-  }
+  };
   return (
     <ul className="tracks">
       {buildItems()}
       {props.children}
     </ul>
   )
+};
+
+Tracks.propTypes = {
+  items: PropTypes.array,
+  seed: PropTypes.array,
+  toggleItem: PropTypes.func,
+  children: PropTypes.element,
 };
 
 export default Tracks;

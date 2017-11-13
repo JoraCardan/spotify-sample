@@ -3,8 +3,8 @@ import axios from 'axios';
 export const authUser = () => {
   return {
     type: 'AUTH_USER'
-  }
-}
+  };
+};
 
 export const loadingUserInfo = () => {
   return {
@@ -12,12 +12,12 @@ export const loadingUserInfo = () => {
     paylod: {
       isLoading: true,
     }
-  }
-}
+  };
+};
 
 export const fetchInfo = () => {
   return (dispatch, getState) => {
-    dispatch(loadingUserInfo())
+    dispatch(loadingUserInfo());
     const { accessToken } = getState().spotify;
     return axios({
       method: 'get',
@@ -26,44 +26,44 @@ export const fetchInfo = () => {
         'Authorization': `Bearer ${accessToken}`
       }
     }).then(r => {
-      dispatch(updateInfo(r.data))
-    })
-  }
-}
+      dispatch(updateInfo(r.data));
+    });
+  };
+};
 
 export const updateInfo = (data) => {
   return {
     type: 'UPDATE_INFO',
     payload: data
-  }
-}
+  };
+};
 
 export const loadingTracks = () => {
   return {
     type: 'LOADING_TRACKS',
-  }
-}
+  };
+};
 
 export const fetchUserTopTracks = () => {
   return (dispatch, getState) => {
-    dispatch(loadingTracks())
+    dispatch(loadingTracks());
     const { accessToken } = getState().spotify;
 
     return axios({
-        method: 'get',
-        url: 'https://api.spotify.com/v1/me/top/tracks',
-        headers: {
-          'Authorization': `Bearer ${accessToken}`
-        }
-      }).then(r => {
-        dispatch(updateUserTopTracks(r.data.items))
-      });
-  }
-}
+      method: 'get',
+      url: 'https://api.spotify.com/v1/me/top/tracks',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    }).then(r => {
+      dispatch(updateUserTopTracks(r.data.items));
+    });
+  };
+};
 
 export const fetchRecommendations = () => {
   return (dispatch, getState) => {
-    dispatch(loadingTracks())
+    dispatch(loadingTracks());
     const state = getState();
     const { accessToken } = state.spotify;
     const { seed } = state.candidate;
@@ -80,8 +80,8 @@ export const fetchRecommendations = () => {
     }).then(r => {
       dispatch(updateRecommendation(r.data.tracks));
     });
-  }
-}
+  };
+};
 
 export const updateUserTopTracks = (tracks) => {
   return {
@@ -89,8 +89,8 @@ export const updateUserTopTracks = (tracks) => {
     payload: {
       tracks
     }
-  }
-}
+  };
+};
 
 export const updateRecommendation = (tracks) => {
   return {
@@ -98,8 +98,8 @@ export const updateRecommendation = (tracks) => {
     payload: {
       tracks
     }
-  }
-}
+  };
+};
 
 
 export const toggleToFavorites = (id) => {
@@ -108,5 +108,5 @@ export const toggleToFavorites = (id) => {
     payload: {
       id
     }
-  }
-}
+  };
+};
