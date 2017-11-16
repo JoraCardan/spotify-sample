@@ -13,31 +13,23 @@ import {
 class User extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      recommendations: props.recommendations || []
+    }
 
     if (props.candidate.isAuthenticated && props.candidate.isLoaded) {
       this.props.fetchUserTopTracks();
     }
-
-    this.loadRecommendations = this.loadRecommendations.bind(this);
   }
 
-  loadRecommendations() {
-    const { candidate } = this.props;
-    if (candidate.isLoaded && candidate.seed.length && !candidate.tracksLoading) {
-      return <button className="btn" onClick={() => this.props.fetchRecommendations()}>Load Recommendations</button>;
-    } else if (candidate.tracksLoading) {
-      return (
-        <div className="text--center">
-          <img src="https://media.giphy.com/media/3y0oCOkdKKRi0/giphy.gif" alt="loading" />
-        </div>
-      );
-    } else if (candidate.isLoaded) {
-      return <button className="btn btn--disabled">Please Add to Favorites at least a couple of songs</button>
+  componentDidUpdate(prevProps) {
+    if (prevProps.candidate.seed.length !== this.props.candidate.seed.length) {
+      this.props.fetchRecommendations();
     }
   }
 
   render() {
-    const { candidate, toggleToFavorites } = this.props;
+    const { candidate, toggleToFavorites, fetchRecommendations } = this.props;
 
     return (
       <div>
@@ -49,7 +41,7 @@ class User extends Component {
             {candidate.isLoaded && <Tracks items={candidate.favorites} seed={candidate.seed} toggleItem={toggleToFavorites} />}
           </div>
           <div className="col">
-            {candidate.isLoaded && <Tracks items={candidate.recommendations}>{this.loadRecommendations()}</Tracks>}
+            {candidate.isLoaded && <Tracks items={candidate.recommendations}></Tracks>}
           </div>
         </div>
       </div>

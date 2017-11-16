@@ -19,7 +19,6 @@ const Tracks = (props) => {
               {props.toggleItem && <button
                 className={`btn tracks__btn ${isChecked && 'tracks__btn--selected btn--disabled'}`}
                 onClick={e => props.toggleItem(item.id)}
-                disabled={isChecked && 'disabled'}
               >&hearts;</button>}
             </div>
           </li>

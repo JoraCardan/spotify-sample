@@ -68,6 +68,11 @@ export const fetchRecommendations = () => {
     const { accessToken } = state.spotify;
     const { seed } = state.candidate;
 
+    if (!seed.length) {
+      dispatch(updateRecommendation([]));
+      return false;
+    }
+
     return axios({
       method: 'get',
       url: 'https://api.spotify.com/v1/recommendations',
